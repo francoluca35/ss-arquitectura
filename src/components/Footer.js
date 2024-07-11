@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Image from 'next/image';
 import footerimg from '../../public/assets/logo-footer.png'
@@ -41,3 +42,14 @@ function Footer() {
 }
 
 export default Footer;
+
+import React from 'react'
+
+function Footer() {
+  return (
+    <div>Footer</div>
+  )
+}
+
+export default Footer
+
