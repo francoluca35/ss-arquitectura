@@ -18,26 +18,17 @@
 
 body {
   color: rgb(var(--foreground-rgb));
- 
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
-
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
 
   }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10%);
-  }
-}
-
-.bounce {
-  animation: bounce 1.5s infinite;
 }
