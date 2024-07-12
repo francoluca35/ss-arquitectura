@@ -14,10 +14,7 @@ const Carousel = () => {
     { id: 2, image: '/assets/background-2.png', width: 1080, height: 1080, title: 'DESARROLLO URBANÍSTICO', buttonText: 'MÁS PROYECTOS' },
     { id: 3, image: '/assets/background-5.jpg', width: 1080, height: 1080, title: 'ARQUITECTURA y INTERIORISMO', buttonText: 'MÁS PROYECTOS' }
 
-    { id: 1, image: '/assets/b1.jpg', width: 1920, height: 1080, title: 'DESARROLLO DE ARQUITECTOS', buttonText: 'MÁS PROYECTOS' }, 
-    { id: 2, image: '/assets/background-2.png', width: 1920, height: 1080, title: 'HOLA MUNDO', buttonText: 'MÁS PROYECTOS' },
-    { id: 3, image: '/assets/background-5.jpg', width: 1920, height: 1080, title: 'CASAS MODERNAS', buttonText: 'MÁS PROYECTOS' }
-
+  
   ];
 
   const prevSlide = () => {

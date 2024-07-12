@@ -1,5 +1,5 @@
 import React from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+
 import 'tailwindcss/tailwind.css';
 import Image from 'next/image';
 import wspImg from '../../public/assets/wsp.png'
