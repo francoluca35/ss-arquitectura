@@ -12,7 +12,7 @@ const projects = [
     imageSrc: imgService,
   },
   {
-    id: 'page2',
+    id: 'casa2',
     title: 'Proyecto 2',
     category: 'Hoteles',
     imageSrc: imgService,
@@ -50,7 +50,7 @@ export default function Projects() {
     <>
       <Navbar />
       <div className="p-8">
-        <h1 className="text-3xl font-bold mb-14 mt-14 text-black">Projects</h1>
+        <h1 className="text-3xl font-bold mb-14 mt-14 text-black">Projectos</h1>
         <div className="flex space-x-4 mb-8">
           {categories.map(category => (
             <button
