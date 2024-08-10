@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
-import footerimg from '../../public/assets/logo-footer.png'
+import footerimg from '../../public/assets/nuevologoB.png'
 
 
 function Footer() {
