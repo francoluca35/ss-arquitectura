@@ -1,21 +1,49 @@
 'use client'
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '/public/assets/nuevologo.png';
 
+function Item({ name, path, color, colorAct, onClick, isActive }) {
+  return (
+    <li>
+      <Link href={path} legacyBehavior>
+        <a 
+          onClick={() => onClick(path)} 
+          className={`${isActive ? colorAct : ''} hover:${color}`}
+        >
+          {name}
+        </a>
+      </Link>
+    </li>
+  );
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('/');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setActiveLink(window.location.pathname);
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+    toggleMenu();
   };
 
   return (
     <nav className="bg-white p-2 fixed top-0 left-0 w-full z-20 flex items-center justify-between shadow-md">
       <div className="flex items-center">
         <Link href="/" legacyBehavior>
-          <a className="flex items-center">
+          <a className="flex items-center" onClick={() => handleLinkClick('/')}>
             <Image src={Logo} alt="Logo" width={140} height={60} className='ml-10' />
           </a>
         </Link>
@@ -23,7 +51,7 @@ export default function Navbar() {
       <div>
         <button
           onClick={toggleMenu}
-          className="text-black focus:outline-none mr-10 hover:text-[#72939C]"
+          className="text-black focus:outline-none mr-10 hover:text-slate-500"
         >
           <svg
             className="w-6 h-6"
@@ -64,43 +92,18 @@ export default function Navbar() {
           </button>
           <div className="absolute top-4 left-4">
             <Link href="/" legacyBehavior>
-              <a className="flex items-center">
+              <a className="flex items-center" onClick={() => handleLinkClick('/')}>
                 <Image src={Logo} alt="Logo" width={180} height={50} className='ml-10'/>
               </a>
             </Link>
           </div>
           <div className="flex justify-between items-start w-full px-8 mt-20">
             <ul className="space-y-6 text-left text-2xl font-bold text-black uppercase ml-5">
-              <li>
-                <Link href="/" legacyBehavior>
-                  <a onClick={toggleMenu} className="hover:text-orange-500">Inicio</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" legacyBehavior>
-                  <a onClick={toggleMenu} className="hover:text-orange-500">Sobre Nosotros</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" legacyBehavior>
-                  <a onClick={toggleMenu} className="hover:text-orange-500">Servicios</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" legacyBehavior>
-                  <a onClick={toggleMenu} className="hover:text-orange-500">Proyectos</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/review" legacyBehavior>
-                  <a onClick={toggleMenu} className="hover:text-orange-500">Reseñas</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" legacyBehavior>
-                  <a onClick={toggleMenu} className="hover:text-orange-500">Contacto</a>
-                </Link>
-              </li>
+              <Item name="Inicio" path="/" color="text-slate-500" colorAct="text-cyan-800" onClick={handleLinkClick} isActive={activeLink === '/'} />
+              <Item name="Sobre Nosotros" path="/about" color="text-slate-500" colorAct="text-cyan-800" onClick={handleLinkClick} isActive={activeLink === '/about'} />
+              <Item name="Servicios" path="/services" color="text-slate-500" colorAct="text-cyan-800" onClick={handleLinkClick} isActive={activeLink === '/services'} />
+              <Item name="Proyectos" path="/projects" color="text-slate-500" colorAct="text-cyan-800" onClick={handleLinkClick} isActive={activeLink === '/projects'} />
+              <Item name="Contactos" path="/contact" color="text-slate-500" colorAct="text-cyan-800" onClick={handleLinkClick} isActive={activeLink === '/contact'} />
             </ul>
             <div className="text-left text-lg text-black ml-10">
               <h2 className="font-bold">Contacto</h2>
